@@ -13,6 +13,8 @@ from pydantic import BaseModel
   "count": int
 }
 """
+
+
 class AggregateResponse(BaseModel):
     mean: float
     stddev: float
@@ -22,4 +24,3 @@ class AggregateResponse(BaseModel):
     p50: float
     p75: float
     count: int
-
