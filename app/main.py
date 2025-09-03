@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from sqlmodel import SQLModel
 from app.api import aggregate, import_marks
 from app.database import engine
-from app.models import results
 
 app = FastAPI()
 

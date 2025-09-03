@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, Request, HTTPException
-from sqlmodel import Session, select, update
+from sqlmodel import Session, select
 from sqlalchemy.exc import SQLAlchemyError
 from pydantic import ValidationError
 from app.database import get_session

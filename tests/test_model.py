@@ -1,4 +1,3 @@
-import pytest
 from app.models.import_marks_request import ImportMarksRequest
 
 
