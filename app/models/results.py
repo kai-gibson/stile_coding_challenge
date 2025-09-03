@@ -9,7 +9,7 @@ class Results(SQLModel, table=True):
             "student_number", "test_id", name="UNIQUE_CONSTRAINT_STUDENT_TEST_ID"
         ),
     )
-    id: int = Field(primary_key=True)
+    id: int | None = Field(default=None, primary_key=True)
     student_number: str
     test_id: int
     available_marks: int
