@@ -33,9 +33,8 @@ async def import_marks(request: Request, session: Session = Depends(get_session)
 
         existing_result = session.exec(stmt).one_or_none()
 
-        # if existing test results exist for this student and test_id, check if
-        # the new obtained or available marks are higher than the last and
-        # update them in the db
+        # if there's existing test results for this student and test_id, check if
+        # the new obtained or available marks are higher than the last and update them in the db
         if existing_result is not None:
             if (
                 existing_result.available_marks < test_result.summary_marks.available
@@ -63,6 +62,6 @@ async def import_marks(request: Request, session: Session = Depends(get_session)
     try:
         session.commit()
     except SQLAlchemyError as e:
-        raise HTTPException(400, detail=f"Error updating database: {str(e)}")
+        raise HTTPException(500, detail=f"Error updating database: {str(e)}")
 
     return {"detail": "Update successful"}

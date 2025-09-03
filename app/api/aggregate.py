@@ -7,6 +7,7 @@ import numpy as np
 
 router = APIRouter()
 
+
 @router.get("/results/{test_id}/aggregate")
 def aggregate_marks(test_id: int, session: Session = Depends(get_session)):
     stmt = select(Results).where(Results.test_id == test_id)
@@ -15,7 +16,7 @@ def aggregate_marks(test_id: int, session: Session = Depends(get_session)):
     if len(results) == 0:
         raise HTTPException(404, detail=f"No results found for test-id {test_id}")
 
-
+    # Get list of percentage marks i.e. 90.0 == 90%
     percent_marks = [
         (result.obtained_marks / result.available_marks) * 100
         if result.available_marks

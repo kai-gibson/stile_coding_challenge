@@ -9,6 +9,7 @@ class SummaryMarks(BaseXmlModel, tag="summary-marks"):
     obtained: int = attr(name="obtained")
 
 
+# names are marked optional in case they don't get scanned properly by the marking machine
 class MCQTestResult(BaseXmlModel, tag="mcq-test-result"):
     scanned_on: datetime = attr(name="scanned-on")
     first_name: Optional[str] = element(tag="first-name")
