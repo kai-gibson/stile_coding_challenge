@@ -4,9 +4,9 @@ from app.database import get_session
 from app.models.results import Results
 from app.models.aggregate_response import AggregateResponse
 import numpy as np
+import math
 
 router = APIRouter()
-
 
 @router.get("/results/{test_id}/aggregate")
 def aggregate_marks(test_id: int, session: Session = Depends(get_session)):
@@ -29,12 +29,12 @@ def aggregate_marks(test_id: int, session: Session = Depends(get_session)):
     percentiles = np.percentile(percent_marks, [25, 50, 75])
     response = AggregateResponse(
         mean=round(float(np.mean(percent_marks)), 2),
-        stddev=round(float(np.std(percent_marks, ddof=0))),
-        min=round(float(np.min(percent_marks))),
-        max=round(float(np.max(percent_marks))),
-        p25=round(float(percentiles[0])),
-        p50=round(float(percentiles[1])),
-        p75=round(float(percentiles[2])),
+        stddev=round(float(np.std(percent_marks, ddof=0)), 2),
+        min=round(float(np.min(percent_marks)), 2),
+        max=round(float(np.max(percent_marks)), 2),
+        p25=round(float(percentiles[0]), 2),
+        p50=round(float(percentiles[1]), 2),
+        p75=round(float(percentiles[2]), 2),
         count=len(percent_marks),
     )
 

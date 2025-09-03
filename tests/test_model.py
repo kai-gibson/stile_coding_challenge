@@ -72,7 +72,7 @@ def test_import_marks_single_from_sample():
     assert result.summary_marks.available == 20
     assert result.summary_marks.obtained == 13
     
-def test_import_marks_sample_results():
+def test_import_marks_sample_results_from_file():
     sample_data: str
     with open('sample_data/sample_results.xml', 'r') as sample_results:
         sample_data = sample_results.read()

@@ -8,7 +8,6 @@ from app.models.import_marks_request import ImportMarksRequest
 
 router = APIRouter()
 
-
 @router.post("/import")
 async def import_marks(request: Request, session: Session = Depends(get_session)):
     body_bytes = await request.body()
