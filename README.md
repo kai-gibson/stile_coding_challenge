@@ -62,3 +62,4 @@ If the `test-id` doesn't exist you will recieve a 404 error
 - `answer` field will be ignored for this prototype.
 - `student-number`'s are unique per student, and should be treated as a string since they can have leading zeros.
 - `test-id` is an integer and is unique per test.
+- If an error occurs when updating/inserting the test-results on /import we should roll back all changes
