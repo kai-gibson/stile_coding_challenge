@@ -7,7 +7,9 @@ It uses a postgreSQL database to store test results, since it's reasonably perfo
 
 ## Usage:
 ```
-docker compose up --build
+git clone https://github.com/kai-gibson/stile_coding_challenge.git
+cd stile_coding_challenge
+docker-compose up --build
 ```
 
 Or to run manually:
