@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:17
+    container_name: markr_db
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: markrdb
+    ports:  
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  
+  web:
+    build: .
+    container_name: markr_app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 4567
+    ports:
+      - "4567:4567"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    environment:
+      DATABASE_URL: postgresql+psycopg2://myuser:mypassword@db:5432/markrdb
+
+volumes:
+  pgdata:
