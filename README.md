@@ -4,6 +4,25 @@
 This repo contains the code for a simple marking service build using python and FastAPI. 
 It uses a postgreSQL database to store test results, since it's reasonably performant and supports concurrent writes - useful since FastAPI will spin up a thread per request.
 
+
+## Usage:
+```
+docker compose up --build
+```
+
+Or to run manually:
+```
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 4567
+```
+
+To run tests:
+```
+pytest
+```
+
 The service serves 2 endpoints:
 
 ## Endpoints:
