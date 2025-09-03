@@ -6,9 +6,7 @@ from app.database import engine
 
 app = FastAPI()
 
-
-# In future I'd make this app use fastAPI async and use lifespan for startup
-# For this prototype this is fine
+# In future I'd make this app use fastAPI lifespan for startup, for this prototype this is fine
 @app.on_event("startup")
 def startup():
     SQLModel.metadata.create_all(engine)
