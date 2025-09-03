@@ -6,11 +6,13 @@ from app.models import results
 
 app = FastAPI()
 
+
 # In future I'd make this app use fastAPI async and use lifespan for startup
 # For this prototype this is fine
 @app.on_event("startup")
 def startup():
     SQLModel.metadata.create_all(engine)
+
 
 app.include_router(import_marks.router)
 app.include_router(aggregate.router)

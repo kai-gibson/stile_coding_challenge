@@ -15,6 +15,7 @@ xml_data = """
 </mcq-test-results>
 """
 
+
 def test_import_marks_request():
     request = ImportMarksRequest.from_xml(xml_data)
 
