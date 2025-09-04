@@ -8,6 +8,7 @@ from app.models.import_marks_request import ImportMarksRequest
 
 router = APIRouter()
 
+
 @router.post("/import")
 async def import_marks(request: Request, session: Session = Depends(get_session)):
     body_bytes = await request.body()
@@ -57,7 +58,7 @@ async def import_marks(request: Request, session: Session = Depends(get_session)
 
             session.add(new_result)
 
-    # commit all the updates/inserts together and roll back on failure - to avoid partial updates
+    # commit all the updates/inserts together and roll back on failure - to avoid partial updates and improve speed
     try:
         session.commit()
     except SQLAlchemyError as e:
